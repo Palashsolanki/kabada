@@ -101,15 +101,6 @@ const main = async () => {
         .trim()
       const uomsWithPrices = []
 
-      // const variants = []
-
-      // const images = []
-      // $('.image-gallery-modal.gallery.text-center img').each((_, img) => {
-      //   const imgSrc = $(img).attr('src')
-      //   if (!imgSrc) return
-      //   images.push(imgSrc)
-      // })
-
       $('div.product-select-unit-of-measure select > option').each(
         (_, uomOption) => {
           uomsWithPrices.push({
@@ -119,21 +110,6 @@ const main = async () => {
           })
         }
       )
-
-      // $('.prod-summary a.tag').each((_, variant) => {
-      //   const variantUrl = $(variant).attr('href')
-      //   if (!variantUrl) return
-      //   const productId = variantUrl.split('/').pop()
-      //   if (!productId) return
-
-      //   if (variantAddedIdSet.has(productId)) return
-      //   variantAddedIdSet.add(productId)
-
-      //   variants.push({
-      //     id: productId,
-      //     value: $(variant).text().trim()
-      //   })
-      // })
 
       const specifications = {}
       $('#specifications table tr').each((_, spec) => {
@@ -173,17 +149,6 @@ const main = async () => {
           })
         }
       })
-
-      // const finalProductData = {
-      //   ...productInfo,
-      //   title,
-      //   uomsWithPrices,
-      //   variants,
-      //   ...specifications
-      // images: Array.from(new Set(images)),
-      // features: $('#specifications .product-features').html()?.trim()
-      // }
-      // finalProducts.push(finalProductData)
     })
 
     await writeFile('test.json', JSON.stringify(finalProducts))
@@ -219,8 +184,4 @@ const getProducts = async ($, productIdSet, products, pageUrl) => {
   )
 }
 
-const test = async () => {
-  await writeFile('product.html', (await client.get('/product/1020958')).data)
-}
 main()
-test
